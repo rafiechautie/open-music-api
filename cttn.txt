@@ -1,0 +1,1 @@
+npm run lint -- --fix -> perbaiki format kode secara otomatis

@@ -1,0 +1,35 @@
+{
+  "name": "open-music-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./src",
+    "migrate": "node-pg-migrate",
+    "start:dev": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafiechautie/open-music-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafiechautie/open-music-api/issues"
+  },
+  "homepage": "https://github.com/rafiechautie/open-music-api#readme",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.7",
+    "dotenv": "^16.4.5",
+    "joi": "^17.12.2",
+    "node-pg-migrate": "^6.2.2",
+    "pg": "^8.11.4",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1"
+  }
+}
