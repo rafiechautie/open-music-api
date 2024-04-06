@@ -27,21 +27,31 @@ class AlbumService {
   }
 
   async getAlbumById(id) {
-    const query = {
+    const queryAlbum = {
       text: 'SELECT * FROM album WHERE album_id = $1',
       values: [id],
     };
 
+    const querySongs = {
+      text: 'SELECT song_id, title, performer FROM songs WHERE album_id = $1',
+      values: [id],
+    };
+
     try {
-      const result = await this._pool.query(query);
-      if (result.rows.length === 0) {
+      const resultAlbum = await this._pool.query(queryAlbum);
+      if (resultAlbum.rows.length === 0) {
         throw new NotFoundError(`Album dengan ID ${id} tidak ditemukan`);
       }
-      const album = result.rows[0];
+      const album = resultAlbum.rows[0];
+
+      const resultSongs = await this._pool.query(querySongs);
+      const songs = resultSongs.rows;
+
       return {
         id: album.album_id,
         name: album.name,
         year: album.year,
+        songs,
       };
     } catch (error) {
       if (error instanceof NotFoundError) {
@@ -92,7 +102,6 @@ class AlbumService {
         throw new NotFoundError('Album gagal ditambahkan. album_id tidak ditemukan');
       }
     } catch (error) {
-      console.log(error);
       if (error instanceof NotFoundError) {
         throw error;
       }

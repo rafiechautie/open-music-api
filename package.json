@@ -21,6 +21,7 @@
   "homepage": "https://github.com/rafiechautie/open-music-api#readme",
   "dependencies": {
     "@hapi/hapi": "^21.3.7",
+    "auto-bind": "^4.0.0",
     "dotenv": "^16.4.5",
     "joi": "^17.12.2",
     "node-pg-migrate": "^6.2.2",
